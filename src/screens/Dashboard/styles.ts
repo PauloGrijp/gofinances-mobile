@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
 import { Feather } from '@expo/vector-icons';
+import { FlatList } from 'react-native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import { DataListProps } from '.';
-import { FlatList } from 'react-native';
 
 
 export const Container = styled.View`
@@ -96,6 +96,6 @@ export const TransactionList = styled(
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: getBottomSpace(),
-  },
+  }
 })``;
 
