@@ -52,7 +52,6 @@ export function CategorySelcted({
         )}
         ItemSeparatorComponent={() => <Separator />}
       />
-
       <Footer>
         <Button
           title="Selecionar"

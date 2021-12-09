@@ -61,6 +61,7 @@ export function Register() {
     console.log(data)
   }
 
+  console.log(categoryModal)
   function handleCloseSelectCategory() {
     setCategoryModal(false);
   }
