@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';

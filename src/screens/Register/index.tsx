@@ -62,9 +62,9 @@ export function Register() {
       id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
-      transactionType,
+      type: transactionType,
       category: category.key,
-      data: new Date(),
+      date: new Date(),
     }
 
     try {

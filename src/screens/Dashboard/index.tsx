@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import  AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { HighlightCard } from '../../components/HighlightCard';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
 import {
@@ -23,32 +25,42 @@ export interface DataListProps extends TransactionCardProps {
 }
 
 export function Dashboard() {
-  const data: DataListProps[] = [
-    {
-      id: 1,
-      type: 'positive',
-      title: 'Desenvolvimento de software',
-      amount: 'R$ 6.000,00',
-      category: {name: 'vendas', icon: 'dollar-sign'},
-      date: '12/08/2021',
-    },
-    {
-      id: 2,
-      type: 'negative',
-      title: 'Aluguel de apartamento',
-      amount: 'R$ 1.000,00',
-      category: {name: 'casa', icon: 'shopping-bag'},
-      date: '12/08/2021',
-    },
-    {
-      id: 3,
-      type: 'negative', 
-      title: 'Supermercado',
-      amount: 'R$ 400,00',
-      category: {name: 'comida', icon: 'coffee'},
-      date: '11/08/2021',
-    } 
-  ]
+  const [data, setData] = useState<DataListProps[]>([])
+  
+  async function loadTransaction() {
+    const dataKey = '@gofinances:transaction';
+    const response = await AsyncStorage.getItem(dataKey);
+    console.log(response)
+    const transactions = response ? JSON.parse(response) : [];
+    
+    const transactionFormatted: DataListProps[] = transactions
+      .map((item: DataListProps) => {
+        const amount = Number(item.amount)
+          .toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          });
+      
+        const date = Intl.DateTimeFormat('pt-BR', {
+          day: '2-digit',
+          month: '2-digit',
+          year: '2-digit',
+        }).format(new Date(item.date));
+
+        return {
+          ...item,
+          amount,
+          date,
+        }
+      })
+      setData(transactionFormatted)
+  }
+  useEffect(() => {
+    loadTransaction()
+
+  }, [])
+  console.log(data)
+
   return (
     <Container>
       <Header>
