@@ -5,6 +5,7 @@ import 'intl/locale-data/jsonp/pt-BR';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
+import { StatusBar } from 'react-native';
 
 import {
   useFonts,
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
+      <StatusBar translucent backgroundColor={theme.colors.primary}/>
         <AppRoutes />
       </NavigationContainer>
     </ThemeProvider>
