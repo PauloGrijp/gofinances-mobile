@@ -37,7 +37,7 @@ export function Register() {
   })
   const [transactionType, setTransactionType] = useState('');
   const [categoryModal, setCategoryModal] = useState(false);
-  const dataKey = '@gofinances:transaction';
+  const dataKey = '@gofinances:transactions';
 
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
 

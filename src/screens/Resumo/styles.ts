@@ -45,7 +45,7 @@ export const MonthSelect  = styled.View`
 
 export const MonthSelectButton  = styled(BorderlessButton)``;
 
-export const SelectIcon  = styled(Feather)`
+export const MonthSelectIcon  = styled(Feather)`
   font-size: ${RFValue(20)}px;
 `;
 

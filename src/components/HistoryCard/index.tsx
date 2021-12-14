@@ -8,7 +8,7 @@ interface HistoryCarProps {
   amount: string;
 }
 
-function HistoryCar({ color, title, amount}: HistoryCarProps) {
+function HistoryCard({ color, title, amount}: HistoryCarProps) {
   return (
     <Container color={color}>
      <Title>{title}</Title>
@@ -17,4 +17,4 @@ function HistoryCar({ color, title, amount}: HistoryCarProps) {
   );
 };
 
-export default HistoryCar;
+export default HistoryCard;
